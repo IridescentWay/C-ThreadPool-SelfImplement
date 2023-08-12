@@ -1,14 +1,14 @@
 src = $(wildcard *.c)
 compileOut = $(patsubst %.c, %.o, $(src))
-include=./include
+# include=./include
 
 all:testThreadPool
 
 testThreadPool:$(compileOut)
-	gcc $^ -o $@ -g -Wall
+	gcc $^ -o $@ -lpthread -Wall
 
 %.o:%.c
-	gcc -c $^ -I $(include)
+	gcc -c -g $^
 
 clean:
 	-rm -rf $(compileOut) testThreadPool
